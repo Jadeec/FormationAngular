@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="image">
+      <img src="{{ movie.poster }}" alt="jokerMovieCover" />
+    </div>
+    <div class="details">
+      <h1 class="title">{{ movie.title | uppercase}}</h1>
+      <span> <strong>Réalisateur :</strong></span>
+      <div *ngFor="let director of movie.directors">
+        <span>{{ director }} </span>
+      </div>
+  
+      <span>
+        <strong>Acteurs : </strong>
+      </span>
+      <span *ngFor="let actor of movie.actors; last as isLast"
+        >{{ isLast ? actor : actor + ", &nbsp;" }}
+      </span>
+  
+      <div *ngFor="let genre of movie.genres">
+        <p><strong>Genres :</strong>{{ genre }}</p>
+      </div>
+      <div *ngIf="movie.synopsis">
+        <p><strong>Synopsis : </strong> {{ movie.synopsis | limitCharacter}}</p>
+      </div>
+    </div>
+  </div>
+  

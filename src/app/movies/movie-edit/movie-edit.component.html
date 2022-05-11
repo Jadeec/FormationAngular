@@ -1,0 +1,156 @@
+<div class="container">
+  <div *ngIf="formContact" [hidden]="submitted">
+    <h1>Contact from</h1>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="formContact">
+      <div class="form-group">
+        <label for="title">Firstname</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          formControlName="title"
+          required
+        />
+      </div>
+
+      <div
+        *ngIf="formContact.get('title')?.errors?.['required']&&formContact.get('title')?.dirty"
+        class="alert alert-danger"
+      >
+        Le title est requis.
+      </div>
+      <div
+        *ngIf="formContact.get('title')?.errors?.['minlength']&&formContact.get('title')?.dirty"
+        class="alert alert-danger"
+      >
+        Le title doit faire plus de 4 caractères.
+      </div>
+
+      <label for="title">Réalisateur(s)</label>
+      <select
+        class="form-control"
+        id="directors"
+        required
+        multiple
+        formControlName="directors"
+      >
+        <option *ngFor="let dir of directorsList" [value]="dir">
+          {{ dir }}
+        </option>
+      </select>
+      <div *ngIf="formContact.get('directors')?.errors?.['required']&&formContact.get('directors')?.dirty" class="alert alert-danger">
+        Il est obligatoire de choisir au moins un réalisateur.
+      </div>
+
+      <div
+        *ngIf="formContact.get('directors')?.errors?.['required']&&formContact.get('directors')?.dirty"
+        class="alert alert-danger"
+      >
+        Les réalisateurs sont requis.
+      </div>
+
+      <div class="form-group">
+        <label for="actors">Acteurs</label>
+        <input
+          type="text"
+          class="form-control"
+          id="actors"
+          formControlName="actors"
+          required
+        />
+      </div>
+      <div
+        *ngIf="formContact.get('actors')?.errors?.['required']&&formContact.get('actors')?.dirty"
+        class="alert alert-danger"
+      >
+        Les acteurs sont requis.
+      </div>
+
+      <div class="form-group">
+        <label for="genres">Genres</label>
+        <input
+          type="text"
+          class="form-control"
+          id="genres"
+          formControlName="genres"
+          required
+        />
+      </div>
+      <div
+        *ngIf="formContact.get('genres')?.errors?.['required']&&formContact.get('genres')?.dirty"
+        class="alert alert-danger"
+      >
+        Les genres sont requis.
+      </div>
+
+      <div class="form-group">
+        <label for="synopsis">Synopsis</label>
+        <input
+          type="text"
+          class="form-control"
+          id="synopsis"
+          formControlName="synopsis"
+        />
+      </div>
+      <div
+        *ngIf="formContact.get('synopsis')?.errors?.['required']&&formContact.get('synopsis')?.dirty"
+        class="alert alert-danger"
+      >
+        Le synopsis est requis.
+      </div>
+      <div
+        *ngIf="formContact.get('synopsis')?.errors?.['minlength']&&formContact.get('synopsis')?.dirty"
+        class="alert alert-danger"
+      >
+        Le synopsis doit faire plus de 250 caractères.
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="formContact.invalid"
+      >
+        Submit
+      </button>
+      <button type="button" class="btn btn-danger" (click)="newContact()">
+        Réinitialiser
+      </button>
+    </form>
+  </div>
+  <div [hidden]="!submitted" *ngIf="model">
+    <h2>Informations</h2>
+    <div class="row">
+      <div class="col-sm-3">Prénom</div>
+      <div class="col-sm-9 pull-left">
+        {{ model.title }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">Nom</div>
+      <div class="col-sm-9 pull-left">
+        {{ model.directors }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">Téléphone</div>
+      <div class="col-sm-9 pull-left">
+        {{ model.actors }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">Email</div>
+      <div class="col-sm-9 pull-left">
+        {{ model.genres }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">Date de naissance</div>
+      <div class="col-sm-9 pull-left">
+        {{ model.synopsis }}
+      </div>
+    </div>
+    <br />
+    <button class="btn btn-primary" (click)="submitted = false">Edit</button>
+  </div>
+</div>
