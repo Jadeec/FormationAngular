@@ -11,8 +11,6 @@ import { MovieDetailsComponent } from './movie/movie-details/movie-details.compo
 @NgModule({
   declarations: [
     AppComponent,
-    MovieCardComponent,
-    MovieListComponent,
     LimitCharacterPipe,
     MovieEditComponent,
     MovieDetailsComponent,

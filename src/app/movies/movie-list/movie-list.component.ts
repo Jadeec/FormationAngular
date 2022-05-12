@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Movie } from 'src/app/shared/movie';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GENRES } from 'src/assets/data/genres.data';
 import { MOVIES } from 'src/assets/data/movies.data';
 
