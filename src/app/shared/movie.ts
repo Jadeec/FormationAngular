@@ -1,4 +1,5 @@
 export interface Movie {
+  id:number,
   poster: string;
   title: string;
   directors: string[];

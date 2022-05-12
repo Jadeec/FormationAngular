@@ -1,2 +1,5 @@
-<app-movie-edit></app-movie-edit>
-<app-movie-list [movies]="movies"> </app-movie-list>
+<nav>
+    <a routerLink="/movies" routerLinkActive="active">Accueil</a>
+    <a routerLink="/movie/new" routerLinkActive="active">Create movie</a>
+ </nav>
+ <router-outlet></router-outlet>

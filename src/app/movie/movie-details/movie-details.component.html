@@ -1,8 +1,6 @@
-<div class="container">
+<div class="container" *ngIf="movie">
   <div class="image">
-    <a [routerLink]="['/movie', movie.id]" 
-      ><img src="{{ movie.poster }}" alt="movie cover" />
-    </a>
+    <img src="{{ movie.poster }}" alt="jokerMovieCover" />
   </div>
   <div class="details">
     <h1 class="title">{{ movie.title | uppercase }}</h1>
@@ -22,9 +20,7 @@
       <p><strong>Genres :</strong>{{ genre }}</p>
     </div>
     <div *ngIf="movie.synopsis">
-      <p *ngIf="full">
-        <strong>Synopsis : </strong> {{ movie.synopsis | limitCharacter }}
-      </p>
+      <p><strong>Synopsis : </strong> {{ movie.synopsis | limitCharacter }}</p>
     </div>
   </div>
 </div>

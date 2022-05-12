@@ -1,3 +1,19 @@
-<div *ngFor="let movie of movies" >
-  <app-movie-card [movie]="movie" ></app-movie-card>
+<nav *ngFor="let genre of genres">
+  <button type="button" class="btn btn-light">
+    <a
+      style="text-decoration: none"
+      [routerLink]="['/movies']"
+      [queryParams]="{ genre: genre }"
+      >{{ genre }}
+    </a>
+  </button>
+</nav>
+<ng-template #noMovie>
+  <h2 style="text-align:center ;">Aucun film n'est référencé</h2>
+</ng-template>
+
+<div *ngIf="movies.length; else noMovie">
+  <div *ngFor="let movie of movies">
+    <app-movie-card [movie]="movie"></app-movie-card>
+  </div>
 </div>

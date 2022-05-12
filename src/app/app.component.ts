@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GENRES } from 'src/assets/data/genres.data';
 import { MOVIES } from 'src/assets/data/movies.data';
 import { Movie } from './shared/movie';
 
@@ -7,9 +8,12 @@ import { Movie } from './shared/movie';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'project-movies';
   movies: Movie[] = MOVIES;
+ 
 
   constructor() {}
+
+  ngOnInit(): void {}
 }
