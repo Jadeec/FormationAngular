@@ -4,7 +4,7 @@
 
     <form (ngSubmit)="onSubmit()" [formGroup]="formContact">
       <div class="form-group">
-        <label for="title">Firstname</label>
+        <label for="title">Title</label>
         <input
           type="text"
           class="form-control"
@@ -52,13 +52,17 @@
 
       <div class="form-group">
         <label for="actors">Acteurs</label>
-        <input
-          type="text"
-          class="form-control"
-          id="actors"
-          formControlName="actors"
-          required
-        />
+        <select
+        class="form-control"
+        id="actors"
+        required
+        multiple
+        formControlName="actors"
+      >
+        <option *ngFor="let actor of actors" [value]="actors  ">
+          {{ actor }}
+        </option>
+      </select>
       </div>
       <div
         *ngIf="formContact.get('actors')?.errors?.['required']&&formContact.get('actors')?.dirty"
@@ -69,13 +73,17 @@
 
       <div class="form-group">
         <label for="genres">Genres</label>
-        <input
-          type="text"
-          class="form-control"
-          id="genres"
-          formControlName="genres"
-          required
-        />
+        <select
+        class="form-control"
+        id="genres"
+        required
+        multiple
+        formControlName="genre"
+      >
+        <option *ngFor="let genre of genres" [value]="genres">
+          {{ genre }}
+        </option>
+      </select>
       </div>
       <div
         *ngIf="formContact.get('genres')?.errors?.['required']&&formContact.get('genres')?.dirty"

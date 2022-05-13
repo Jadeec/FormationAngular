@@ -23,4 +23,17 @@
       <p><strong>Synopsis : </strong> {{ movie.synopsis | limitCharacter }}</p>
     </div>
   </div>
+  <button class="btn btn-dark" *ngIf="authService.isLoggedIn">
+    <a
+      style="text-decoration: none"
+      [routerLink]="['/movies/' + movie.id + '/edit']"
+      >Edit
+    </a>
+  </button>
+
+  <h4>
+    <span *ngIf="authService.isLoggedIn" (click)="delete()">
+       <button class="btn btn-dark"><a>Supprimer</a> </button> 
+    </span>
+    </h4>
 </div>

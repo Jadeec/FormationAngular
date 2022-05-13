@@ -1,5 +1,8 @@
 <nav>
-    <a routerLink="/movies" routerLinkActive="active">Accueil</a>
-    <a routerLink="/movie/new" routerLinkActive="active">Create movie</a>
- </nav>
- <router-outlet></router-outlet>
+ <button class="btn btn-primary"> <a routerLink="/movies" routerLinkActive="active">Accueil</a> </button> 
+ <button class="btn btn-primary"> <a routerLink="/movie/new" routerLinkActive="active">Create movie</a> </button >
+  <button class="btn btn-primary"><a routerLink="/login" routerLinkActive="active">Se connecter</a> </button>
+  <a class="btn btn-primary" *ngIf="authService.isLoggedIn" (click)="logout()">Se déconnecter</a>
+
+</nav>
+<router-outlet></router-outlet>

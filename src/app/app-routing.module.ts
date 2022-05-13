@@ -1,28 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
-import { MovieEditComponent } from './movies/movie-edit/movie-edit.component';
 import { MovieListComponent } from './movies/movie-list/movie-list.component';
+import { LoginComponent } from './shared/login/login.component';
 
 const routes: Routes = [
-  {
-    path: 'movie/:id',
-    component: MovieDetailsComponent,
-  },
-  {
-    path: 'movie/new',
-    component: MovieEditComponent,
-  },
-  {
-    path: 'movies',
-    component: MovieListComponent,
-  },
+ 
+  { path: '', 
+  loadChildren: () => import('./movies/movies.module').then(m => m.MoviesModule)
+   },
+   { path: 'login', component: LoginComponent },
+
   {
     path: '',
     redirectTo: 'movies',
     pathMatch: 'full',
   },
-  { path: '**', component: MovieListComponent },
+  { path: '**', component: MovieListComponent }
 ];
 
 @NgModule({
